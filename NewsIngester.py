@@ -1,8 +1,3 @@
-from flask import Flask, request, jsonify
-
-app= Flask(__name__)
-
-
 def FindRelatedDocuments():
     #find related documents from WEB using keywords
 
