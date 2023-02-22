@@ -1,9 +1,9 @@
 # news-analyzer-aryamanbgupta
-Secure File Uploader:
-    User Stories:
-        - I should login to a secure service to upload my content
-        - I should be able to upload documents
-        - I should be able to upload PDFs or images.
+Secure File Uploader:  
+    User Stories:  
+        - I should login to a secure service to upload my content  
+        - I should be able to upload documents  
+        - I should be able to upload PDFs or images.  
         - I should be able to choose who access to my files
         - My documents should be secure and encrypted.
     Entity Based API
