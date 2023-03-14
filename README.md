@@ -62,3 +62,12 @@ News Feed Ingester:
         - Document Analysis Status  
         - Keywords found/ not found  
 
+
+Database Design:
+
+I plan to use a relational SQL database.
+- The database will have different tables containing data about users, their documents, access management and key words
+- One table will contain all the user information with column headers like unique user ID, username, encrypted password, number of documents etc.
+- Each user will have a table that lists all the documents that they have access to with headers like document ID, key words from analysis, list of users who have access to it, owner ID, link to the document etc.
+- A separate table will contain data about all the publicly shared documents for the News Feed with columns like Key word list, original source and link.
+
