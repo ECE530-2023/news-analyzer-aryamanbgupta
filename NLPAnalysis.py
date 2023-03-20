@@ -1,14 +1,14 @@
 def ExtractText():
     #extract text from the uploaded document
-
-    raise ValueError("Text Extraction Failed")
+    extracted_text=""
+    #raise ValueError("Text Extraction Failed")
     return extracted_text
 
 def FindKeyWords():
     #find key words from the text
     #call NLP model
-
-    raise ValueError("Key Words not Found")
+    key_words=[]
+    #raise ValueError("Key Words not Found")
     return key_words
 
 def SentimentAnalysis():
