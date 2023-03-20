@@ -1,5 +1,4 @@
 import sqlite3
-import os
 import uuid
 from NLPAnalysis import ExtractText, FindKeyWords
 
