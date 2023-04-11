@@ -1,5 +1,6 @@
 import sqlite3
 import uuid
+import re
 from NLPAnalysis import ExtractText, FindKeyWords
 
 
@@ -64,8 +65,10 @@ def EncryptFile():
 
 
 def SanitizeInput(input_str):
-    sanitized_str = input_str.strip()  # Remove leading and trailing whitespaces
-    sanitized_str = sanitized_str.replace("'", "''")  # Escape single quotes with double quotes
+    #only certain characters are allowed and the rest are filtered out
+    allowed_chars = r'[a-zA-Z0-9!_@]'
+    sanitized_str = re.sub(f'[^{allowed_chars}]', '', input_str)
+
     return sanitized_str
 
 
