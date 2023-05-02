@@ -1,6 +1,7 @@
 import sqlite3
 import uuid
 import re
+import os
 from NLPAnalysis import ExtractText, FindKeyWords
 
 
@@ -26,6 +27,7 @@ def AuthenticateUser(user_name,password):
     else:
         #If credentials are not found, raise an error
         raise ValueError("Invalid login credentials")
+
     return login_authentication
 
 
@@ -35,7 +37,7 @@ def FileUpload(file_path,users):
     if not IsFileTypeSupported(file_path):
         raise ValueError("Invalid File Type")
     #check file size
-    if file_size > MAX_FILE_SIZE:
+    if os.path.getsize(file_path)> MAX_FILE_SIZE:
         raise ValueError("File size too large")
     
     # Get key words from document
