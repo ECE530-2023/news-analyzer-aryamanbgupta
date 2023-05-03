@@ -1,6 +1,12 @@
-def ExtractText():
+from pypdf import PdfReader
+
+def ExtractText(file_path):
     #extract text from the uploaded document
-    extracted_text=""
+    reader = PdfReader(file_path)
+    extracted_text = ""
+    for page in reader.pages:
+        page_text = page.extract_text()
+        extracted_text += page_text
     #raise ValueError("Text Extraction Failed")
     return extracted_text
 
