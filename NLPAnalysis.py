@@ -9,6 +9,7 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 nltk.download('punkt')
 nltk.download('vader_lexicon')
 nltk.download('stopwords')
+nltk.download('wordnet')
 
 def ExtractText(file_path):
     #extract text from the uploaded document
