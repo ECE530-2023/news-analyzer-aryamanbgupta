@@ -4,6 +4,8 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 import string
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+
 
 def ExtractText(file_path):
     #extract text from the uploaded document
@@ -40,8 +42,12 @@ def FindKeyWords(total_text):
     #raise ValueError("Key Words not Found")
     return top_keywords
 
-def SentimentAnalysis():
+def SentimentAnalysis(text):
     #Sentiment analysis on given text
+    analyzer = SentimentIntensityAnalyzer()
 
-    raise ValueError("Sentiment Analysis Failed")
+    # use the polarity_scores() method to analyze the sentiment of the text
+    sentiment_analysis_results = analyzer.polarity_scores(text)
+
+    #raise ValueError("Sentiment Analysis Failed")
     return sentiment_analysis_results
