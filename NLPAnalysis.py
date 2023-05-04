@@ -8,6 +8,7 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 nltk.download('punkt')
 nltk.download('vader_sentiment')
+nltk.download('stopwords')
 
 def ExtractText(file_path):
     #extract text from the uploaded document
