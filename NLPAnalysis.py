@@ -6,6 +6,8 @@ from nltk.stem import WordNetLemmatizer
 import string
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
+nltk.download('punkt')
+nltk.download('vader_sentiment')
 
 def ExtractText(file_path):
     #extract text from the uploaded document
