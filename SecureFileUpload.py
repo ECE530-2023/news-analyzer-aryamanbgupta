@@ -23,7 +23,7 @@ def AuthenticateUser(user_name,password):
     row = c.fetchone()
     conn.close()
     if row is not None:
-        return True
+        return row[0]
     else:
         #If credentials are not found, raise an error
         raise ValueError("Invalid login credentials")
@@ -50,8 +50,8 @@ def FileUpload(file_path,users):
     # Insert the document information into the database
     conn = sqlite3.connect('pdf_reader.db')
     c = conn.cursor()
-    c.execute("INSERT INTO USER_DOCUMENTS (ID, KEYWORDS, LINK, USERS) VALUES (?, ?, ?, ?)",
-              (doc_id, key_words, file_path, users))
+    c.execute("INSERT INTO User_Documents (ID, KEYWORD1,KEYWORD2,KEYWORD3,KEYWORD4,KEYWORD5, USERID) VALUES (?, ?, ?, ?, ?, ?, ?)",
+              (doc_id, key_words[0], key_words[1], key_words[2], key_words[3], key_words[4], users))
     conn.commit()
     conn.close()
 
