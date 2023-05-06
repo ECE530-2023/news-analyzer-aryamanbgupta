@@ -4,6 +4,7 @@ from NewsIngester import *
 import pytest
 
 
+
 def test_ExtractText():
     res = ExtractText("Trial.pdf")
     assert res == "Trial 1 2 \\n  "
@@ -32,7 +33,11 @@ def test_DeleteUser():
     username = "test"
     password = "easy"
     assert DeleteUser(username,password) == True
-    
+
+def test_FileUpload():
+    file = "example_text.pdf"
+    user = 1
+    assert type(FileUpload(file,user)) == str
 '''
 
 def FileUploadTest():
