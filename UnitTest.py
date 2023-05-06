@@ -3,6 +3,7 @@ from NLPAnalysis import *
 from NewsIngester import *
 import pytest
 
+
 def test_ExtractText():
     res = ExtractText("Trial.pdf")
     assert res == "Trial 1 2 \\n  "
@@ -21,6 +22,17 @@ def test_AuthenticateUser():
     username = "john"
     password = "secret"
     assert AuthenticateUser(username,password) == 1
+
+def test_SignUpUser():
+    username = "test"
+    password = "easy"
+    assert SignUpUser(username,password) == 2
+
+def test_DeleteUser():
+    username = "test"
+    password = "easy"
+    assert DeleteUser(username,password) == True
+    
 '''
 
 def FileUploadTest():

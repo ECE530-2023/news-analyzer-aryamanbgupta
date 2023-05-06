@@ -9,7 +9,31 @@ from NLPAnalysis import ExtractText, FindKeyWords
 SUPPORTED_FILE_TYPES = ['pdf', 'txt', 'docx']
 MAX_FILE_SIZE = 10 * 1024 * 1024  # 10 MB in bytes
 
+def SignUpUser(user_name,password):
+    sanitized_user_name= SanitizeInput(user_name)
+    sanitized_password= SanitizeInput(password)
+    conn = sqlite3.connect('pdf_reader.db')
+    c = conn.cursor()
+    c.execute("INSERT INTO users (username, password) VALUES (?, ?)", (sanitized_user_name, sanitized_password))
+    c.execute("SELECT * FROM users WHERE username = ? AND password = ?", (sanitized_user_name, sanitized_password))
+    row = c.fetchone()
+    conn.commit()
+    conn.close()
+    return row[0]
 
+def DeleteUser(user_name, password):
+    sanitized_user_name= SanitizeInput(user_name)
+    sanitized_password= SanitizeInput(password)
+    conn = sqlite3.connect('pdf_reader.db')
+    c = conn.cursor()
+    c.execute("DELETE FROM users WHERE username = ? AND password = ?", (sanitized_user_name, sanitized_password))
+    if c.rowcount == 0:
+        raise ValueError("User not found.")
+    else:
+        conn.commit()
+        conn.close()
+        return True
+    
 def AuthenticateUser(user_name,password):
     #Authenticate user using login credentials
     #Sanitize user input
