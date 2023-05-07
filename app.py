@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 import sqlite3
 from NLPAnalysis import ExtractText
-from SecureFileUpload import AuthenticateUser
+from SecureFileUpload import AuthenticateUser, SignUpUser
 
 app = Flask(__name__)
 
@@ -40,3 +40,19 @@ def login():
 
     else:
         return render_template('login.html')
+
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        
+        SignUpUser(username, password)
+        
+        return render_template('successful_signup.html')
+    else:
+        return render_template('signup.html')
+    
+
+    
+    
