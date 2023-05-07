@@ -93,6 +93,7 @@ Text NLP Analysis:
         - I want the service to tag all my documents and paragraphs within every document with the keywords and know the topics     each document cover  
         - I should be able to access different paragraphs of different documents based on keywords  
         - I should be able to to find all positive, neutral and negative paragraphs and sentences  
+    
     Procedure Based API  
     Operations:  
         - Read all text from PDF and other document types  
@@ -113,6 +114,7 @@ News Feed Ingester:
         - Keywords within paragraphs should be searchable from the internet  
         - I should find definition of keywords using open services  
         - I want to discover content from the WEB to enhance story  
+    
     Entity Based API  
     Operations:  
         - Search and find relevant documents, research papers, webpages to keywords  
