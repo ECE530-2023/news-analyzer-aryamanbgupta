@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Success</title>
+</head>
+<body>
+    <h1>Upload successful! new document id is {{ doc_id }}</h1>
+    <p>Welcome back!</p>
+    <button onclick="window.location.href='/upload?user_id={{ user_id }}&message=success'">Upload another Document</button>
+    <ul>
+        {% for row in data %}
+            <li>{{ row }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

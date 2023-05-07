@@ -21,9 +21,15 @@ def upload_file():
     file = request.files['file']
     user_id = request.form['user_id']
     print ("fileUpload: " + user_id)
-    text = FileUpload(file, user_id)
+    doc_id = FileUpload(file, user_id)
     # Do something with the uploaded file
-    return render_template('successful_login.html', user_id = user_id)
+    conn = sqlite3.connect('pdf_reader.db')
+    c = conn.cursor()
+    c.execute(f'SELECT * FROM User_Documents WHERE USERID == {user_id}')
+    data = c.fetchall()
+    conn.close()
+    return render_template('successful_upload.html', user_id = user_id, data = data, doc_id = doc_id) 
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
