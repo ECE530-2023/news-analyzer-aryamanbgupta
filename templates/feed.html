@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Generate URL Example</title>
+    <script>
+      function generateUrl() {
+        // Get the keyword entered by the user
+        var keyword = document.getElementById("keyword").value;
+        
+        // Generate the URL based on the keyword
+        var url = "https://www.jstor.org/action/doBasicSearch?Query=" + keyword;
+        
+        // Redirect the user to the new URL
+        window.location.href = url;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Generate URL Example</h1>
+    <form>
+      <label for="keyword">Enter a keyword:</label>
+      <input type="text" id="keyword" name="keyword">
+      <button type="button" onclick="generateUrl()">Generate URL</button>
+    </form>
+  </body>
+</html>

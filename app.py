@@ -70,4 +70,6 @@ def sentiment():
     print("upload: " + user_id)
     return render_template('upload.html', user_id = user_id)
     
-    
+@app.route('/similar')
+def similar():
+    return render_template('feed.html')
