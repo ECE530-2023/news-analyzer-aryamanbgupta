@@ -1,6 +1,7 @@
 import sqlite3
 import uuid
 import re
+import hashlib
 import os
 from NLPAnalysis import ExtractText, FindKeyWords, SentimentAnalysis
 
@@ -11,10 +12,15 @@ MAX_FILE_SIZE = 10 * 1024 * 1024  # 10 MB in bytes
 def SignUpUser(user_name,password):
     sanitized_user_name= SanitizeInput(user_name)
     sanitized_password= SanitizeInput(password)
+
+    #Hash password befor storing it
+    password_bytes = sanitized_password.encode('utf-8')
+    hashed_password = hashlib.sha256(password_bytes).hexdigest()
+
     conn = sqlite3.connect('pdf_reader.db')
     c = conn.cursor()
-    c.execute("INSERT INTO users (username, password) VALUES (?, ?)", (sanitized_user_name, sanitized_password))
-    c.execute("SELECT * FROM users WHERE username = ? AND password = ?", (sanitized_user_name, sanitized_password))
+    c.execute("INSERT INTO users (username, password) VALUES (?, ?)", (sanitized_user_name, hashed_password))
+    c.execute("SELECT * FROM users WHERE username = ? AND password = ?", (sanitized_user_name, hashed_password))
     row = c.fetchone()
     conn.commit()
     conn.close()
@@ -23,9 +29,13 @@ def SignUpUser(user_name,password):
 def DeleteUser(user_name, password):
     sanitized_user_name= SanitizeInput(user_name)
     sanitized_password= SanitizeInput(password)
+
+    password_bytes = sanitized_password.encode('utf-8')
+    hashed_password = hashlib.sha256(password_bytes).hexdigest()
+
     conn = sqlite3.connect('pdf_reader.db')
     c = conn.cursor()
-    c.execute("DELETE FROM users WHERE username = ? AND password = ?", (sanitized_user_name, sanitized_password))
+    c.execute("DELETE FROM users WHERE username = ? AND password = ?", (sanitized_user_name, hashed_password))
     if c.rowcount == 0:
         raise ValueError("User not found.")
     else:
@@ -39,10 +49,13 @@ def AuthenticateUser(user_name,password):
     sanitized_user_name= SanitizeInput(user_name)
     sanitized_password= SanitizeInput(password)
 
+    password_bytes = sanitized_password.encode('utf-8')
+    hashed_password = hashlib.sha256(password_bytes).hexdigest()
+
     #Connect to database and check credentials
     conn = sqlite3.connect('pdf_reader.db')
     c = conn.cursor()
-    c.execute("SELECT * FROM users WHERE username = ? AND password = ?", (sanitized_user_name, sanitized_password))
+    c.execute("SELECT * FROM users WHERE username = ? AND password = ?", (sanitized_user_name, hashed_password))
     row = c.fetchone()
     conn.close()
     if row is not None:
