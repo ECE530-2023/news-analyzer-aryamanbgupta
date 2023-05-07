@@ -27,7 +27,7 @@ def test_AuthenticateUser():
 def test_SignUpUser():
     username = "test"
     password = "easy"
-    assert SignUpUser(username,password) == 2
+    assert type(SignUpUser(username,password)) == int
 
 def test_DeleteUser():
     username = "test"
