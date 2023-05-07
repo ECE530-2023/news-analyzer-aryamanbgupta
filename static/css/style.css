@@ -1,0 +1,51 @@
+/* Apply a margin to the top of the page */
+body {
+    margin-top: 50px;
+}
+
+/* Style the heading text */
+h1 {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Style the form label and input elements */
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+input[type="text"],
+input[type="password"] {
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+/* Style the submit button */
+input[type="submit"],
+button[type="submit"] {
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+    height: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover,
+button[type="submit"]:hover {
+    background-color: #0069d9;
+}
