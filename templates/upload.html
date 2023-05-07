@@ -4,6 +4,7 @@
     <h1>Upload a file</h1>
     <form action="/upload_file" method="post" enctype="multipart/form-data">
         <input type="file" name="file">
+        <input type="text" id="user_id" name="user_id" value={{ user_id }}><br>
         <input type="submit" value="Upload">
     </form>
 </body>

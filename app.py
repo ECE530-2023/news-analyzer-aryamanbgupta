@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 import sqlite3
 from NLPAnalysis import ExtractText
-from SecureFileUpload import AuthenticateUser, SignUpUser
+from SecureFileUpload import AuthenticateUser, FileUpload, SignUpUser
 
 app = Flask(__name__)
 
@@ -12,14 +12,18 @@ def hello_world():
 @app.route('/upload')
 def upload():
     #print("hello")
-    return render_template('upload.html')
+    user_id = request.args.get('user_id')
+    print("upload: " + user_id)
+    return render_template('upload.html', user_id = user_id)
 
 @app.route('/upload_file', methods=['POST'])
 def upload_file():
     file = request.files['file']
-    text = ExtractText(file)
+    user_id = request.form['user_id']
+    print ("fileUpload: " + user_id)
+    text = FileUpload(file, user_id)
     # Do something with the uploaded file
-    return f"<p> {text} </p>"
+    return f"<p> {user_id} : {text} </p>"
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

@@ -58,12 +58,13 @@ def AuthenticateUser(user_name,password):
 def FileUpload(file_path,users):
     #define File upload procedure for all valid file types
     #check if file type is supported
+    '''
     if not IsFileTypeSupported(file_path):
         raise ValueError("Invalid File Type")
     #check file size
     if os.path.getsize(file_path)> MAX_FILE_SIZE:
         raise ValueError("File size too large")
-    
+    '''
     # Get key words from document
     text= ExtractText(file_path)
     key_words= FindKeyWords(text)

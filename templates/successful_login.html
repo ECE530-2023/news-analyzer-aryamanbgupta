@@ -6,6 +6,7 @@
 <body>
     <h1>Login successful!</h1>
     <p>Welcome, {{ username }}!</p>
+    <button onclick="window.location.href='/upload?user_id={{ user_id }}&message=success'">Upload a Document</button>
     <ul>
         {% for row in data %}
             <li>{{ row }}</li>
