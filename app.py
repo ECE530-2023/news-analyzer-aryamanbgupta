@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import sqlite3
 from NLPAnalysis import ExtractText
 from SecureFileUpload import AuthenticateUser
 
@@ -28,7 +29,12 @@ def login():
 
         try:
             user_id = AuthenticateUser(username, password)
-            return render_template('successful_login.html', user_id = user_id, username = username)
+            conn = sqlite3.connect('pdf_reader.db')
+            c = conn.cursor()
+            c.execute(f'SELECT * FROM User_Documents WHERE USERID == {user_id}')
+            data = c.fetchall()
+            conn.close()
+            return render_template('successful_login.html', user_id = user_id, username = username, data = data)
         except ValueError:
             return render_template('failed_login.html')
 

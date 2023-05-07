@@ -6,5 +6,10 @@
 <body>
     <h1>Login successful!</h1>
     <p>Welcome, {{ username }}!</p>
+    <ul>
+        {% for row in data %}
+            <li>{{ row }}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
