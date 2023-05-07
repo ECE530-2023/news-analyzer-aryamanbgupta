@@ -23,7 +23,7 @@ def upload_file():
     print ("fileUpload: " + user_id)
     text = FileUpload(file, user_id)
     # Do something with the uploaded file
-    return f"<p> {user_id} : {text} </p>"
+    return render_template('successful_login.html', user_id = user_id)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
