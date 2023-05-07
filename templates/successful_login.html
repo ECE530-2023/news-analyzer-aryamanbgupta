@@ -2,16 +2,36 @@
 <html>
 <head>
     <title>Success</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='loggedin_style.css') }}">
 </head>
 <body>
     <h1>Login successful!</h1>
     <p>Welcome, {{ username }}!</p>
     <button onclick="window.location.href='/upload?user_id={{ user_id }}&message=success'">Upload a Document</button>
     <button onclick="window.location.href='/similar?user_id={{ user_id }}&message=success'">Find Similar Documents</button>
-    <ul>
+    <table>
+        <tr>
+            <th>Document ID</th>
+            <th>Keyword 1</th>
+            <th>Keyword 2</th>
+            <th>Keyword 3</th>
+            <th>Keyword 4</th>
+            <th>Keyword 5</th>
+            <th>User ID</th>
+            <th>Sentiment Analysis</th>
+        </tr>
         {% for row in data %}
-            <li>{{ row }}</li>
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <td>{{ row[3] }}</td>
+                <td>{{ row[4] }}</td>
+                <td>{{ row[5] }}</td>
+                <td>{{ row[6] }}</td>
+                <td>{{ row[7] }}</td>
+            </tr>
         {% endfor %}
-    </ul>
+    </table>
 </body>
 </html>
