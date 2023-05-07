@@ -25,7 +25,7 @@ def upload_file():
     # Do something with the uploaded file
     conn = sqlite3.connect('pdf_reader.db')
     c = conn.cursor()
-    c.execute(f'SELECT * FROM User_Documents WHERE USERID == {user_id}')
+    c.execute(f'SELECT * FROM User_Documents WHERE UUSERID == {user_id}')
     data = c.fetchall()
     conn.close()
     return render_template('successful_upload.html', user_id = user_id, data = data, doc_id = doc_id) 
@@ -41,7 +41,7 @@ def login():
             user_id = AuthenticateUser(username, password)
             conn = sqlite3.connect('pdf_reader.db')
             c = conn.cursor()
-            c.execute(f'SELECT * FROM User_Documents WHERE USERID == {user_id}')
+            c.execute(f'SELECT * FROM User_Documents WHERE UUSERID == {user_id}')
             data = c.fetchall()
             conn.close()
             return render_template('successful_login.html', user_id = user_id, username = username, data = data)
@@ -63,6 +63,11 @@ def signup():
     else:
         return render_template('signup.html')
     
-
+@app.route('/sentiment')
+def sentiment():
+    #print("hello")
+    user_id = request.args.get('user_id')
+    print("upload: " + user_id)
+    return render_template('upload.html', user_id = user_id)
     
     

@@ -2,8 +2,7 @@ import sqlite3
 import uuid
 import re
 import os
-from NLPAnalysis import ExtractText, FindKeyWords
-
+from NLPAnalysis import ExtractText, FindKeyWords, SentimentAnalysis
 
 #sample global variables
 SUPPORTED_FILE_TYPES = ['pdf', 'txt', 'docx']
@@ -68,6 +67,7 @@ def FileUpload(file_path,users):
     # Get key words from document
     text= ExtractText(file_path)
     key_words= FindKeyWords(text)
+    sentiment = str(SentimentAnalysis(text))
 
     # Generate a unique document ID
     doc_id = str(uuid.uuid4())
@@ -75,8 +75,8 @@ def FileUpload(file_path,users):
     # Insert the document information into the database
     conn = sqlite3.connect('pdf_reader.db')
     c = conn.cursor()
-    c.execute("INSERT INTO User_Documents (ID, KEYWORD1,KEYWORD2,KEYWORD3,KEYWORD4,KEYWORD5, USERID) VALUES (?, ?, ?, ?, ?, ?, ?)",
-              (doc_id, key_words[0], key_words[1], key_words[2], key_words[3], key_words[4], users))
+    c.execute("INSERT INTO User_Documents (ID, KEYWORD1,KEYWORD2,KEYWORD3,KEYWORD4,KEYWORD5, UUSERID, SENTIMENT) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+              (doc_id, key_words[0], key_words[1], key_words[2], key_words[3], key_words[4], users, sentiment))
     conn.commit()
     conn.close()
 
