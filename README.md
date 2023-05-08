@@ -136,3 +136,34 @@ I used a relational SQL database.
 - Each user will have a table that lists all the documents that they have access to with headers like document ID, key words from analysis, list of users who have access to it, owner ID, link to the document etc.
 - A separate table will contain data about all the publicly shared documents for the News Feed with columns like Key word list, original source and link.
 
+
+
+## Architecture
+
+The project is designed with a modular architecture that separates the various functionalities into different files. Each file has a specific purpose and is responsible for a particular aspect of the application. Here is an overview of the architecture of the project:
+
+### `SecureUpload.py`
+
+This file handles file uploads, user authentication and authorization. It implements secure user registration and login systems, and provides user-specific access to uploaded files. It also implements the File upload functionality.
+
+### `NLPAnalysis.py`
+
+This file contains the functions to extract text from PDFs, find key words from the texts and conduct sentiment analysis. It uses the PyPDF library to extract text from PDF documents, and the Natural Language Toolkit (NLTK) for text analysis and sentiment analysis.
+
+### `NewsIngester.py`
+
+This file implements a feed ingester to find similar documents based on key words. It searches for relevant documents on the web based on the key words extracted from the uploaded PDF document.
+
+### `Queues.py`
+
+This file implements a queuing and threading system for NLP analysis and file upload. It manages a queue of tasks and assigns them to worker threads to improve performance and reduce latency.
+
+### `app.py`
+
+This file contains the code for the Flask website and interaction with the backend. It handles user requests, communicates with the different modules, and generates appropriate responses.
+
+### `UnitTest.py`
+
+This file contains all the unit tests for the various modules. It tests each module's functionality independently to ensure they are working correctly.
+
+Overall, the modular architecture of the project ensures that each component is responsible for a specific functionality, making it easier to maintain and scale the application in the future.
