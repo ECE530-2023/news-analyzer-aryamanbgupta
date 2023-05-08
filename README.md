@@ -142,7 +142,7 @@ I used a relational SQL database.
 
 The project is designed with a modular architecture that separates the various functionalities into different files. Each file has a specific purpose and is responsible for a particular aspect of the application. Here is an overview of the architecture of the project:
 
-### `SecureUpload.py`
+### `SecureFileUpload.py`
 
 This file handles file uploads, user authentication and authorization. It implements secure user registration and login systems, and provides user-specific access to uploaded files. It also implements the File upload functionality.
 
