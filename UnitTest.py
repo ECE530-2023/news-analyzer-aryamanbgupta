@@ -38,6 +38,14 @@ def test_FileUpload():
     file = "example_text.pdf"
     user = 1
     assert type(FileUpload(file,user)) == str
+
+def test_FindRelatedDocuments():
+    key = 'murakami'
+    res = FindRelatedDocuments(key)
+    resText =''
+    for letter in res:
+        resText += letter
+    assert res[0] == 'M'
 '''
 
 def FileUploadTest():

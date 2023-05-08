@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import sqlite3
 from NLPAnalysis import ExtractText
+from NewsIngester import FindRelatedDocuments
 from SecureFileUpload import AuthenticateUser, FileUpload, SignUpUser
 
 app = Flask(__name__)
@@ -73,3 +74,15 @@ def sentiment():
 @app.route('/similar')
 def similar():
     return render_template('feed.html')
+
+@app.route('/localfeed')
+def local():
+    key = request.args.get('key')
+    key = str(key)
+    print("local: "+ key)
+    try:
+        data = FindRelatedDocuments(key)
+        return render_template('localfeed.html', data = data)
+    except ValueError:
+        return render_template('failed_login.html')
+    
