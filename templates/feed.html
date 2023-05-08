@@ -14,6 +14,18 @@
         window.location.href = url;
       }
     </script>
+    <script>
+        function searchLocal() {
+            // Get the keyword entered by the user
+            var keyword = document.getElementById("keyword").value;
+            
+            // Generate the URL based on the keyword
+            var url = "/localfeed?key=" + keyword;
+            
+            // Redirect the user to the new URL
+            window.location.href = url;
+        }
+    </script>
   </head>
   <body>
     <h1>Generate URL Example</h1>
@@ -21,12 +33,7 @@
       <label for="keyword">Enter a keyword:</label>
       <input type="text" id="keyword" name="keyword">
       <button type="button" onclick="generateUrl()">Search from the Web</button>
-    </form>
-    </form>
-    <form action="/localfeed" method="get">
-        <label for="keyword">Enter a keyword:</label>
-        <input type="text" id="keyword" name="keyword">
-        <button type="submit">Search Local Feed</button>
+      <button type="button" onclick="searchLocal()">Search Local Feed</button>
     </form>
   </body>
 </html>

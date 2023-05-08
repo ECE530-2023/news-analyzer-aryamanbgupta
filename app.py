@@ -79,10 +79,13 @@ def similar():
 def local():
     key = request.args.get('key')
     key = str(key)
-    print("local: "+ key)
+    #print("local: "+ key)
     try:
         data = FindRelatedDocuments(key)
-        return render_template('localfeed.html', data = data)
+        resText =''
+        for letter in data:
+            resText += letter 
+        return render_template('localfeed.html', data = resText, keyword = key)
     except ValueError:
         return render_template('failed_login.html')
     
