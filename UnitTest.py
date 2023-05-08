@@ -20,9 +20,9 @@ def test_SentimentAnalysis():
     assert res['compound'] == 0.2023
 
 def test_AuthenticateUser():
-    username = "john"
-    password = "secret"
-    assert AuthenticateUser(username,password) == 1
+    username = "check"
+    password = "hash"
+    assert AuthenticateUser(username,password) == 5
 
 def test_SignUpUser():
     username = "test"
